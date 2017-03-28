@@ -1,0 +1,21 @@
+//
+//  MoviesPch.pch
+//  MyMoviesGoGoGo
+//
+//  Created by v.q on 2017/3/22.
+//  Copyright © 2017年 Victor Qi. All rights reserved.
+//
+
+#ifndef MoviesPch_pch
+#define MoviesPch_pch
+
+#ifdef __OBJC__
+
+#import <ReactiveObjC/ReactiveObjC.h>
+#import <Mantle/Mantle.h>
+#import <AFNetworking/AFNetworking.h>
+#import <Masonry/Masonry.h>
+
+#endif
+
+#endif /* MoviesPch_pch */

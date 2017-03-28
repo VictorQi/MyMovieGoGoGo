@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B6348C701E851E7F009795A7 /* MovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6348C6F1E851E7F009795A7 /* MovieDetailViewController.m */; };
 		B654642B1E825E5B005E7231 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B654642A1E825E5B005E7231 /* main.m */; };
 		B654642E1E825E5B005E7231 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B654642D1E825E5B005E7231 /* AppDelegate.m */; };
 		B65464311E825E5B005E7231 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B65464301E825E5B005E7231 /* ViewController.m */; };
@@ -14,9 +15,21 @@
 		B65464371E825E5B005E7231 /* MyMoviesGoGoGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B65464351E825E5B005E7231 /* MyMoviesGoGoGo.xcdatamodeld */; };
 		B65464391E825E5B005E7231 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B65464381E825E5B005E7231 /* Assets.xcassets */; };
 		B654643C1E825E5B005E7231 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B654643A1E825E5B005E7231 /* LaunchScreen.storyboard */; };
+		B65464461E8266D7005E7231 /* Services.m in Sources */ = {isa = PBXBuildFile; fileRef = B65464451E8266D7005E7231 /* Services.m */; };
+		B65464491E826A70005E7231 /* MainViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B65464481E826A70005E7231 /* MainViewModel.m */; };
+		B65464561E83A603005E7231 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B65464551E83A603005E7231 /* SessionManager.m */; };
+		B65464591E83AFD5005E7231 /* MovieSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B65464581E83AFD5005E7231 /* MovieSearchRequest.m */; };
+		B654645C1E83CDDB005E7231 /* MovieResultsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B654645B1E83CDDB005E7231 /* MovieResultsModel.m */; };
+		B6CB444A1E8910680073D6EA /* MovieConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CB44491E8910680073D6EA /* MovieConfigurationModel.m */; };
+		D91C1B3406F31EE6041DCA58 /* libPods-MyMoviesGoGoGo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83FB0A2E1CA55DF7D15074 /* libPods-MyMoviesGoGoGo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7395588781E74FF40BC6D079 /* Pods-MyMoviesGoGoGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMoviesGoGoGo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyMoviesGoGoGo/Pods-MyMoviesGoGoGo.release.xcconfig"; sourceTree = "<group>"; };
+		8D83FB0A2E1CA55DF7D15074 /* libPods-MyMoviesGoGoGo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyMoviesGoGoGo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		940BE5EAC2BCF0F5DF8A6A0E /* Pods-MyMoviesGoGoGo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyMoviesGoGoGo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyMoviesGoGoGo/Pods-MyMoviesGoGoGo.debug.xcconfig"; sourceTree = "<group>"; };
+		B6348C6E1E851E7F009795A7 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
+		B6348C6F1E851E7F009795A7 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
 		B65464261E825E5B005E7231 /* MyMoviesGoGoGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyMoviesGoGoGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B654642A1E825E5B005E7231 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B654642C1E825E5B005E7231 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,6 +41,20 @@
 		B65464381E825E5B005E7231 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B654643B1E825E5B005E7231 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B654643D1E825E5B005E7231 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B65464431E825E83005E7231 /* MoviesPch.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesPch.pch; sourceTree = "<group>"; };
+		B65464441E8266D7005E7231 /* Services.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Services.h; sourceTree = "<group>"; };
+		B65464451E8266D7005E7231 /* Services.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Services.m; sourceTree = "<group>"; };
+		B65464471E826A70005E7231 /* MainViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewModel.h; sourceTree = "<group>"; };
+		B65464481E826A70005E7231 /* MainViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewModel.m; sourceTree = "<group>"; };
+		B65464521E82744D005E7231 /* ProjectConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProjectConstants.h; sourceTree = "<group>"; };
+		B65464541E83A603005E7231 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
+		B65464551E83A603005E7231 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
+		B65464571E83AFD5005E7231 /* MovieSearchRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieSearchRequest.h; sourceTree = "<group>"; };
+		B65464581E83AFD5005E7231 /* MovieSearchRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieSearchRequest.m; sourceTree = "<group>"; };
+		B654645A1E83CDDB005E7231 /* MovieResultsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieResultsModel.h; sourceTree = "<group>"; };
+		B654645B1E83CDDB005E7231 /* MovieResultsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieResultsModel.m; sourceTree = "<group>"; };
+		B6CB44481E8910680073D6EA /* MovieConfigurationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieConfigurationModel.h; sourceTree = "<group>"; };
+		B6CB44491E8910680073D6EA /* MovieConfigurationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieConfigurationModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +62,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D91C1B3406F31EE6041DCA58 /* libPods-MyMoviesGoGoGo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0778561F826BDA586884BBC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8D83FB0A2E1CA55DF7D15074 /* libPods-MyMoviesGoGoGo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3D320EB662BB72F07788705 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				940BE5EAC2BCF0F5DF8A6A0E /* Pods-MyMoviesGoGoGo.debug.xcconfig */,
+				7395588781E74FF40BC6D079 /* Pods-MyMoviesGoGoGo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B654641D1E825E5B005E7231 = {
 			isa = PBXGroup;
 			children = (
 				B65464281E825E5B005E7231 /* MyMoviesGoGoGo */,
 				B65464271E825E5B005E7231 /* Products */,
+				A3D320EB662BB72F07788705 /* Pods */,
+				0778561F826BDA586884BBC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,13 +107,15 @@
 		B65464281E825E5B005E7231 /* MyMoviesGoGoGo */ = {
 			isa = PBXGroup;
 			children = (
+				B65464431E825E83005E7231 /* MoviesPch.pch */,
 				B654642C1E825E5B005E7231 /* AppDelegate.h */,
 				B654642D1E825E5B005E7231 /* AppDelegate.m */,
-				B654642F1E825E5B005E7231 /* ViewController.h */,
-				B65464301E825E5B005E7231 /* ViewController.m */,
-				B65464321E825E5B005E7231 /* Main.storyboard */,
-				B65464381E825E5B005E7231 /* Assets.xcassets */,
-				B654643A1E825E5B005E7231 /* LaunchScreen.storyboard */,
+				B65464531E8274C9005E7231 /* Utils */,
+				B65464501E826ACB005E7231 /* Views */,
+				B654644D1E826A9F005E7231 /* Models */,
+				B654644E1E826AA9005E7231 /* ViewModels */,
+				B654644F1E826AB3005E7231 /* Network Services */,
+				B65464511E826ADA005E7231 /* Assests */,
 				B654643D1E825E5B005E7231 /* Info.plist */,
 				B65464351E825E5B005E7231 /* MyMoviesGoGoGo.xcdatamodeld */,
 				B65464291E825E5B005E7231 /* Supporting Files */,
@@ -82,6 +131,68 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B654644D1E826A9F005E7231 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B654645A1E83CDDB005E7231 /* MovieResultsModel.h */,
+				B654645B1E83CDDB005E7231 /* MovieResultsModel.m */,
+				B65464571E83AFD5005E7231 /* MovieSearchRequest.h */,
+				B65464581E83AFD5005E7231 /* MovieSearchRequest.m */,
+				B6CB44481E8910680073D6EA /* MovieConfigurationModel.h */,
+				B6CB44491E8910680073D6EA /* MovieConfigurationModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		B654644E1E826AA9005E7231 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B65464471E826A70005E7231 /* MainViewModel.h */,
+				B65464481E826A70005E7231 /* MainViewModel.m */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		B654644F1E826AB3005E7231 /* Network Services */ = {
+			isa = PBXGroup;
+			children = (
+				B65464441E8266D7005E7231 /* Services.h */,
+				B65464451E8266D7005E7231 /* Services.m */,
+				B65464541E83A603005E7231 /* SessionManager.h */,
+				B65464551E83A603005E7231 /* SessionManager.m */,
+			);
+			name = "Network Services";
+			sourceTree = "<group>";
+		};
+		B65464501E826ACB005E7231 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B654642F1E825E5B005E7231 /* ViewController.h */,
+				B65464301E825E5B005E7231 /* ViewController.m */,
+				B6348C6E1E851E7F009795A7 /* MovieDetailViewController.h */,
+				B6348C6F1E851E7F009795A7 /* MovieDetailViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B65464511E826ADA005E7231 /* Assests */ = {
+			isa = PBXGroup;
+			children = (
+				B65464321E825E5B005E7231 /* Main.storyboard */,
+				B65464381E825E5B005E7231 /* Assets.xcassets */,
+				B654643A1E825E5B005E7231 /* LaunchScreen.storyboard */,
+			);
+			name = Assests;
+			sourceTree = "<group>";
+		};
+		B65464531E8274C9005E7231 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B65464521E82744D005E7231 /* ProjectConstants.h */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -89,9 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B65464401E825E5B005E7231 /* Build configuration list for PBXNativeTarget "MyMoviesGoGoGo" */;
 			buildPhases = (
+				BEFB6696E8A07148845DAE22 /* [CP] Check Pods Manifest.lock */,
 				B65464221E825E5B005E7231 /* Sources */,
 				B65464231E825E5B005E7231 /* Frameworks */,
 				B65464241E825E5B005E7231 /* Resources */,
+				431D7B0014959075161B9356 /* [CP] Embed Pods Frameworks */,
+				9D58B0087F5F70EA8D94A0BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,6 +263,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		431D7B0014959075161B9356 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMoviesGoGoGo/Pods-MyMoviesGoGoGo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D58B0087F5F70EA8D94A0BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MyMoviesGoGoGo/Pods-MyMoviesGoGoGo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEFB6696E8A07148845DAE22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B65464221E825E5B005E7231 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -156,8 +318,15 @@
 			files = (
 				B65464311E825E5B005E7231 /* ViewController.m in Sources */,
 				B654642E1E825E5B005E7231 /* AppDelegate.m in Sources */,
+				B6CB444A1E8910680073D6EA /* MovieConfigurationModel.m in Sources */,
+				B6348C701E851E7F009795A7 /* MovieDetailViewController.m in Sources */,
+				B65464561E83A603005E7231 /* SessionManager.m in Sources */,
+				B65464461E8266D7005E7231 /* Services.m in Sources */,
+				B65464491E826A70005E7231 /* MainViewModel.m in Sources */,
 				B65464371E825E5B005E7231 /* MyMoviesGoGoGo.xcdatamodeld in Sources */,
+				B65464591E83AFD5005E7231 /* MovieSearchRequest.m in Sources */,
 				B654642B1E825E5B005E7231 /* main.m in Sources */,
+				B654645C1E83CDDB005E7231 /* MovieResultsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,9 +442,12 @@
 		};
 		B65464411E825E5B005E7231 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 940BE5EAC2BCF0F5DF8A6A0E /* Pods-MyMoviesGoGoGo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YZ2L42YQ8T;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyMoviesGoGoGo/MoviesPch.pch";
 				INFOPLIST_FILE = MyMoviesGoGoGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = v.q.MyMoviesGoGoGo;
@@ -285,9 +457,12 @@
 		};
 		B65464421E825E5B005E7231 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7395588781E74FF40BC6D079 /* Pods-MyMoviesGoGoGo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YZ2L42YQ8T;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyMoviesGoGoGo/MoviesPch.pch";
 				INFOPLIST_FILE = MyMoviesGoGoGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = v.q.MyMoviesGoGoGo;
@@ -314,6 +489,7 @@
 				B65464421E825E5B005E7231 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
