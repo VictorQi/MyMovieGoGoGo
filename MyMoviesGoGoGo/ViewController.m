@@ -14,12 +14,14 @@
 
 static NSString *const kCellIdentifier = @"CELL";
 static NSString *const kSegueIdentifier = @"showMovieDetail";
+static NSString *const kImageCacheName = @"ImageCache";
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) MainViewModel *viewModel;
+@property (nonatomic, strong) NSCache<NSString*, UIImage*> *imageCache;
 
 @end
 
@@ -31,6 +33,8 @@ static NSString *const kSegueIdentifier = @"showMovieDetail";
     if (!self) { return nil; }
     
     self.viewModel = [MainViewModel new];
+    self.imageCache = [[NSCache alloc] init];
+    self.imageCache.name = kImageCacheName;
     
     return self;
 }
@@ -40,8 +44,14 @@ static NSString *const kSegueIdentifier = @"showMovieDetail";
     [super viewDidLoad];
     
     self.tableView.dataSource = self;
-
+    
     [self bindViewModel];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    [self.imageCache removeAllObjects];
 }
 
 #pragma mark - View Model Binding
@@ -60,14 +70,20 @@ static NSString *const kSegueIdentifier = @"showMovieDetail";
          [self showAlertWithTitle:@"Error" message:error.localizedDescription];
      }];
     
+    RACSignal<MovieModel *> *tableViewSignal =
     [[self
       rac_signalForSelector:@selector(tableView:didSelectRowAtIndexPath:)
       fromProtocol:@protocol(UITableViewDelegate)]
-     subscribeNext:^(RACTuple * arguments __unused) {
+     map:^MovieModel * _Nullable(RACTuple * _Nullable arguments) {
          @strongify(self);
-         [self performSegueWithIdentifier:kSegueIdentifier sender:self];
+         NSIndexPath *indexPath = (NSIndexPath *)arguments.second;
+         return self.viewModel.movieResults[indexPath.row];
      }];
     self.tableView.delegate = self;
+    
+    [self
+     rac_liftSelector:@selector(performSegueWithIdentifier:sender:)
+     withSignalsFromArray:@[[RACSignal return:kSegueIdentifier], tableViewSignal]];
 }
 
 #pragma mark - Alert
@@ -94,12 +110,44 @@ static NSString *const kSegueIdentifier = @"showMovieDetail";
     }
     
     cell.textLabel.text = self.viewModel.movieResults[indexPath.row].originalTitle;
-    NSURL *posterUrl = nil;
-    if (self.viewModel.movieResults[indexPath.row].posterPath) {
-        posterUrl = [NSURL URLWithString:[self.viewModel.posterBaseUrl stringByAppendingString:self.viewModel.movieResults[indexPath.row].posterPath]];
-    }
-    cell.imageView.contentMode = UIViewContentModeScaleToFill;
-    [cell.imageView sd_setImageWithURL:posterUrl placeholderImage:[UIImage imageNamed:@"poster_placeholder"]];
+    
+    /*
+     * 下面这个RAC图片下载的方法，不断刷新时会引起图片丢失，
+     * 解决的方法应该是自己创建一个cache
+     */
+    @weakify(self, tableView);
+    [[[[RACObserve(self.viewModel, posterBaseUrl)
+        subscribeOn:[RACScheduler schedulerWithPriority:RACSchedulerPriorityBackground]]
+       map:^UIImage * _Nullable(NSString * _Nullable baseUrl) {
+           @strongify(self);
+           NSString *poster = self.viewModel.movieResults[indexPath.row].posterPath;
+           if (poster != nil) {
+               NSString *posterUrl = [baseUrl stringByAppendingString:poster];
+               UIImage *cachedImage = [self.imageCache objectForKey:posterUrl];
+               if (cachedImage != nil) {
+                   return cachedImage;
+               } else {
+                   NSData *posterData = [NSData dataWithContentsOfURL:[NSURL URLWithString:posterUrl]];
+                   UIImage *image = [UIImage imageWithData:posterData];
+                   [self.imageCache setObject:image forKey:posterUrl];
+                   return image;
+               }
+           }
+           return [UIImage imageNamed:@"poster_placeholder"];
+       }]
+      deliverOnMainThread]
+     subscribeNext:^(UIImage * _Nullable image) {
+         @strongify(tableView);
+         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+         cell.imageView.image = image;
+         [cell setNeedsLayout];
+     }];
+    //    NSURL *posterUrl = nil;
+    //    if (self.viewModel.movieResults[indexPath.row].posterPath) {
+    //        posterUrl = [NSURL URLWithString:[self.viewModel.posterBaseUrl stringByAppendingString:self.viewModel.movieResults[indexPath.row].posterPath]];
+    //    }
+    //    cell.imageView.contentMode = UIViewContentModeScaleToFill;
+    //    [cell.imageView sd_setImageWithURL:posterUrl placeholderImage:[UIImage imageNamed:@"poster_placeholder"]];
     
     return cell;
 }
@@ -107,8 +155,7 @@ static NSString *const kSegueIdentifier = @"showMovieDetail";
 #pragma mark - Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueIdentifier]) {
-        NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
-        MovieModel *viewModel = self.viewModel.movieResults[indexPath.row];
+        MovieModel *viewModel = (MovieModel *)sender;
         if ([viewModel.posterPath rangeOfString:self.viewModel.posterBaseUrl].location == NSNotFound && viewModel.posterPath) {
             viewModel.posterPath = [self.viewModel.posterBaseUrl stringByAppendingString:viewModel.posterPath];
         }

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MovieModel, MovieResultsModel;
+@class MovieModel, MovieResultsModel, MovieGenreModel;
 
 @interface MainViewModel : NSObject
 

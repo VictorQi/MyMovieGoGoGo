@@ -11,6 +11,9 @@
 
 #ifdef __OBJC__
 
+#pragma mark - NSUserDefaults Key
+static NSString *const kGenresModelListKey = @"genresModelListKey";
+
 #pragma mark - Base URL & API Key
 // The Movie Database API Base Url & API Key
 static NSString *const kAPIKey = @"f14a34a55c74aa4551cb26a652403179";
@@ -20,7 +23,7 @@ static NSString *const kAPIBaseUrl = @"https://api.themoviedb.org/3/";
 // TMDb Search Operation
 static NSString *const kAPIMoviesSearch = @"search/movie";
 static NSString *const kAPIConfiguration = @"configuration";
-
+static NSString *const kAPIGenresMovieList = @"genre/movie/list";
 #endif
 
 #endif /* ProjectConstants_h */

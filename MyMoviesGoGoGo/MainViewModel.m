@@ -10,14 +10,9 @@
 #import "MovieResultsModel.h"
 #import "Services.h"
 #import "MovieConfigurationModel.h"
+#import "ProjectConstants.h"
 
 @interface MainViewModel ()
-
-@property (nonatomic, copy) NSString *posterBaseUrl;
-@property (nonatomic, copy) NSString *searchText;
-@property (nonatomic, copy) NSArray<MovieModel *> *movieResults;
-@property (nonatomic, assign) NSUInteger page;
-@property (nonatomic, assign) NSUInteger totalPages;
 
 @end
 
@@ -27,7 +22,6 @@
     self = [super init];
     if (!self) { return nil; }
     
-    self.searchText = @"";    
     [self initializeBinding];
     
     return self;
@@ -37,8 +31,15 @@
 - (void)initializeBinding {
     Services *service = [[Services alloc] init];
     
+    [[service getGenreSignal]
+     subscribeNext:^(MovieGenresMovieListModel * _Nullable x) {
+         NSData *genresData = [NSKeyedArchiver archivedDataWithRootObject:x];
+         [[NSUserDefaults standardUserDefaults] setObject:genresData forKey:kGenresModelListKey];
+     }];
+    
     RAC(self, posterBaseUrl) =
-    [[service getPosterSignal] map:^NSString * _Nullable(MovieConfigurationModel * _Nullable value) {
+    [[service getPosterSignal]
+     map:^NSString * _Nullable(MovieConfigurationModel * _Nullable value) {
         return [value.secureBaseUrl stringByAppendingString:value.posterSizes[1]];
     }];
     

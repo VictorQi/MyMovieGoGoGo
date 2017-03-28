@@ -77,5 +77,33 @@
     }] retry:5];
 }
 
+- (RACSignal<MovieGenresMovieListModel *> *)getGenreSignal {
+    return [RACSignal createSignal:^RACDisposable * _Nullable(id<RACSubscriber>  _Nonnull subscriber) {
+        NSURLSessionDataTask *dataTask =
+        [[SessionManager sharedManager]
+         getInformationWithService:kAPIGenresMovieList
+         requestModel:nil
+         completionHandler:^(NSDictionary * _Nullable responseDict, NSError * _Nullable error) {
+             if (error) {
+                 [subscriber sendError:error];
+             } else {
+                 NSError *jsonToModelError = nil;
+                 MovieGenresMovieListModel *results = [MTLJSONAdapter modelOfClass:[MovieGenresMovieListModel class] fromJSONDictionary:responseDict error:&jsonToModelError];
+                 if (jsonToModelError) {
+                     [subscriber sendError:jsonToModelError];
+                 } else {
+                     [subscriber sendNext:results];
+                 }
+             }
+             
+             [subscriber sendCompleted];
+         }];
+        
+        return [RACDisposable disposableWithBlock:^{
+            [dataTask cancel];
+        }];
+    }];
+}
+
 
 @end

@@ -19,3 +19,30 @@
 }
 
 @end
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+@implementation MovieGenresMovieListModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return [NSDictionary mtl_identityPropertyMapWithModel:[MovieGenresMovieListModel class]];
+}
+
++ (NSValueTransformer *)genresJSONTransformer {
+    return [MTLJSONAdapter arrayTransformerWithModelClass:[MovieGenreModel class]];
+}
+
+@end
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+@implementation MovieGenreModel
+
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+    return @{
+             @"genreID": @"id",
+             @"genreName": @"name"
+             };
+}
+
+@end

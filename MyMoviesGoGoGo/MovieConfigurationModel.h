@@ -15,3 +15,21 @@
 @property (nonatomic, copy) NSArray<NSString *> *profileSizes;
 
 @end
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+@interface MovieGenreModel : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, assign) NSNumber *genreID;
+@property (nonatomic, copy) NSString *genreName;
+
+@end
+
+/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
+@interface MovieGenresMovieListModel : MTLModel <MTLJSONSerializing>
+
+@property (nonatomic, copy) NSArray<MovieGenreModel *> *genres;
+
+@end
+

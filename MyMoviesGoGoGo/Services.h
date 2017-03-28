@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class MovieResultsModel, MovieConfigurationModel;
+@class MovieResultsModel, MovieConfigurationModel, MovieGenresMovieListModel;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (RACSignal<MovieResultsModel *> *)signalForQuery:(NSString *)query;
 
 - (RACSignal<MovieConfigurationModel *> *)getPosterSignal;
+
+- (RACSignal<MovieGenresMovieListModel *> *)getGenreSignal;
 
 @end
 

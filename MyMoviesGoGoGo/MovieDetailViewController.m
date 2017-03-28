@@ -8,6 +8,8 @@
 
 #import "MovieDetailViewController.h"
 #import "MovieResultsModel.h"
+#import "MovieConfigurationModel.h"
+#import "ProjectConstants.h"
 #import <UIImageView+WebCache.h>
 
 @interface MovieDetailViewController ()
@@ -15,13 +17,17 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UILabel *genresLabel;
 @property (weak, nonatomic) IBOutlet UITextView *overviewTextView;
+@property (nonatomic, copy) NSArray<MovieGenreModel *> *genresList;
 @end
 
 @implementation MovieDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    NSData *genresListData = [[NSUserDefaults standardUserDefaults] dataForKey:kGenresModelListKey];
+    self.genresList = ((MovieGenresMovieListModel *)[NSKeyedUnarchiver unarchiveObjectWithData:genresListData]).genres;
+    
     [self bindToViewModel];
 }
 
@@ -44,7 +50,14 @@
     [RACObserve(self.viewModel, genres)
      subscribeNext:^(NSArray<NSNumber *> * _Nullable genres) {
          @strongify(self);
-         self.genresLabel.text = [genres componentsJoinedByString:@","];
+         NSArray *genresStringArray =
+         [[self.genresList.rac_sequence
+           filter:^BOOL(MovieGenreModel * _Nullable genreModel) {
+               return [genres containsObject:genreModel.genreID];
+           }] map:^NSString * _Nullable(MovieGenreModel * _Nullable genreModel) {
+               return genreModel.genreName;
+           }].array;
+         self.genresLabel.text = [genresStringArray componentsJoinedByString:@",\n"];
      }];
     
     [RACObserve(self.viewModel, overview)
