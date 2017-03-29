@@ -122,7 +122,7 @@ static NSString *const kImageCacheName = @"ImageCache";
            @strongify(self);
            NSString *poster = self.viewModel.movieResults[indexPath.row].posterPath;
            if (poster != nil) {
-               NSString *posterUrl = [baseUrl stringByAppendingString:poster];
+               NSString *posterUrl = [poster containsString:baseUrl] ? poster : [baseUrl stringByAppendingString:poster];
                UIImage *cachedImage = [self.imageCache objectForKey:posterUrl];
                if (cachedImage != nil) {
                    return cachedImage;
@@ -156,7 +156,7 @@ static NSString *const kImageCacheName = @"ImageCache";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kSegueIdentifier]) {
         MovieModel *viewModel = (MovieModel *)sender;
-        if ([viewModel.posterPath rangeOfString:self.viewModel.posterBaseUrl].location == NSNotFound && viewModel.posterPath) {
+        if ([viewModel.posterPath containsString:self.viewModel.posterBaseUrl] && viewModel.posterPath) {
             viewModel.posterPath = [self.viewModel.posterBaseUrl stringByAppendingString:viewModel.posterPath];
         }
         MovieDetailViewController *detailVC = (MovieDetailViewController *)segue.destinationViewController;

@@ -21,6 +21,7 @@
 		B65464591E83AFD5005E7231 /* MovieSearchRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B65464581E83AFD5005E7231 /* MovieSearchRequest.m */; };
 		B654645C1E83CDDB005E7231 /* MovieResultsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B654645B1E83CDDB005E7231 /* MovieResultsModel.m */; };
 		B6CB444A1E8910680073D6EA /* MovieConfigurationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B6CB44491E8910680073D6EA /* MovieConfigurationModel.m */; };
+		B6E2C4481E8B9E35004791A6 /* LocationSignalController.m in Sources */ = {isa = PBXBuildFile; fileRef = B6E2C4471E8B9E35004791A6 /* LocationSignalController.m */; };
 		D91C1B3406F31EE6041DCA58 /* libPods-MyMoviesGoGoGo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D83FB0A2E1CA55DF7D15074 /* libPods-MyMoviesGoGoGo.a */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,8 @@
 		B654645B1E83CDDB005E7231 /* MovieResultsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieResultsModel.m; sourceTree = "<group>"; };
 		B6CB44481E8910680073D6EA /* MovieConfigurationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieConfigurationModel.h; sourceTree = "<group>"; };
 		B6CB44491E8910680073D6EA /* MovieConfigurationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieConfigurationModel.m; sourceTree = "<group>"; };
+		B6E2C4461E8B9E35004791A6 /* LocationSignalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSignalController.h; sourceTree = "<group>"; };
+		B6E2C4471E8B9E35004791A6 /* LocationSignalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSignalController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				B65464521E82744D005E7231 /* ProjectConstants.h */,
+				B6E2C4461E8B9E35004791A6 /* LocationSignalController.h */,
+				B6E2C4471E8B9E35004791A6 /* LocationSignalController.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 				B65464461E8266D7005E7231 /* Services.m in Sources */,
 				B65464491E826A70005E7231 /* MainViewModel.m in Sources */,
 				B65464371E825E5B005E7231 /* MyMoviesGoGoGo.xcdatamodeld in Sources */,
+				B6E2C4481E8B9E35004791A6 /* LocationSignalController.m in Sources */,
 				B65464591E83AFD5005E7231 /* MovieSearchRequest.m in Sources */,
 				B654642B1E825E5B005E7231 /* main.m in Sources */,
 				B654645C1E83CDDB005E7231 /* MovieResultsModel.m in Sources */,
